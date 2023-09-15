@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil 4</title>
+    <link rel="stylesheet " href="bootstrap-5.3.1-dist/css/bootstrap.min.css">
+</head>
+<body style="background-color: cornflowerblue">
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+             <div class="text-center">
+             <h1 class="mb-3">Banco Software ♡</h1>
+       <img src="./Imagen/ImagenBanco.jpg" alt="" class="img-fluid mb-3">
+         </div>
+                            <div class="card">
+                    <div class="card-header text-black">
+                        <h1 class="mb-0">Realizar retiro</h1>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Ingrese su nombre:</label>
+                                <input type="text" class="form-control" id="NombreU" placeholder="Ingrese su nombre">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="billete" class="form-label">Ingrese cantidad a retirar($):</label>
+                                <input type="number" class="form-control" id="CantidadR" placeholder="Ingrese su cantidad">
+                            </div>
+                
+                            <button type="button" class="btn btn-secondary" id="Retirar">Retirar</button>
+                        </form>
+                    </div>
+                </div>
+            
+                <div class="mt-4 text-center">
+                    <div class="bg-light p-3 " >
+                        <p id="Saludo" class="fw-bold"></p>
+                    </div>
+                </div>
+                <div class="card-footer mt-4" style="background-color: aliceblue;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><span class="badge" style="color: black;">Billetes de 💲100:</span> <span id="B100">X</span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><span class="badge" style="color: black;">Billetes de 💲50:</span> <span id="B50">X</span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><span class="badge" style="color: black;">Billetes de 💲20:</span> <span id="B20">X</span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><span class="badge" style="color: black;">Billetes de 💲10:</span> <span id="B10">X</span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><span class="badge" style="color: black;">Billetes de 💲5:</span> <span id="B5">X</span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><span class="badge" style="color: black;">Billetes de 💲1:</span> <span id="B1">X</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    document.getElementById('Retirar').addEventListener('click', function () {
+    const cantidadRetiro = parseInt(document.getElementById('CantidadR').value);
+
+    if (isNaN(cantidadRetiro) || cantidadRetiro <= 0) {
+        alert('La cantidad no es válida');
+        return;
+    }
+
+    const NombreUsuario = document.getElementById('NombreU').value;
+
+    document.getElementById("Saludo").textContent = `Hola ${NombreUsuario}, tu retiro ha sido realizado de la siguiente manera:`
+
+    const B100 = Math.floor(cantidadRetiro / 100);
+    const B50 = Math.floor((cantidadRetiro % 100) / 50);
+    const B20 = Math.floor(((cantidadRetiro % 100) % 50) / 20);
+    const B10 = Math.floor((((cantidadRetiro % 100) % 50) % 20) / 10);
+    const B5 = Math.floor(((((cantidadRetiro % 100) % 50) % 20) % 10) / 5);
+    const B1 = (((cantidadRetiro % 100) % 50) % 20) % 10 % 5;
+
+    document.getElementById('B100').textContent = B100;
+    document.getElementById('B50').textContent = B50;
+    document.getElementById('B20').textContent = B20;
+    document.getElementById('B10').textContent = B10;
+    document.getElementById('B5').textContent = B5;
+    document.getElementById('B1').textContent = B1;
+});
+
+
+</script>
+<script src="bootstrap-5.3.1-dist/js/bootstrap.min.js"></script>
+    
+</body>
+</html>
